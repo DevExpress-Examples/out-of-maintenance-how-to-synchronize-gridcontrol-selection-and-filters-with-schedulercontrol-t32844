@@ -1,3 +1,11 @@
+<!-- default file list -->
+*Files to look at*:
+
+* [DataProvider.cs](./CS/DataProvider.cs) (VB: [DataProvider.vb](./VB/DataProvider.vb))
+* [MainWindow.xaml](./CS/MainWindow.xaml) (VB: [MainWindow.xaml](./VB/MainWindow.xaml))
+* [SchedulerModel.cs](./CS/SchedulerModel.cs) (VB: [SchedulerModel.vb](./VB/SchedulerModel.vb))
+* **[SchedulerViewModel.cs](./CS/SchedulerViewModel.cs) (VB: [SchedulerViewModel.vb](./VB/SchedulerViewModel.vb))**
+<!-- default file list end -->
 # How to synchronize GridControl selection and filters with SchedulerControl
 
 
