@@ -4,14 +4,14 @@
         xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
         xmlns:dxsch="http://schemas.devexpress.com/winfx/2008/xaml/scheduler"
         xmlns:dxscht="http://schemas.devexpress.com/winfx/2008/xaml/scheduler/themekeys"
-        xmlns:dxschd="clr-namespace:DevExpress.Xpf.Scheduler.Drawing;assembly=DevExpress.Xpf.Scheduler.v15.1"
-        xmlns:dxschdui="clr-namespace:DevExpress.Xpf.Scheduler.UI;assembly=DevExpress.Xpf.Scheduler.v15.1"
+        xmlns:dxschd="clr-namespace:DevExpress.Xpf.Scheduler.Drawing;assembly=DevExpress.Xpf.Scheduler.v21.1"
+        xmlns:dxschdui="clr-namespace:DevExpress.Xpf.Scheduler.UI;assembly=DevExpress.Xpf.Scheduler.v21.1"
         xmlns:local="clr-namespace:SchedulerBindToObservableCollectionWpf"
         xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"
         xmlns:mvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
         Title="MainWindow" Height="800" Width="800">
     <dx:DXWindow.DataContext>
-        <local:SchedulerViewModel/>
+        <local:SchedulerViewModel />
     </dx:DXWindow.DataContext>
     <dx:DXWindow.Resources>
         <dxschd:ToolTipVisibilityToVisibilityConverter x:Key="ToolTipVisibilityConverter" />
@@ -58,7 +58,8 @@
                         Visibility="{Binding ViewInfo.View.AppointmentToolTipVisibility, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource ToolTipVisibilityConverter}}">
                         </ToolTip>
                     </ToolTipService.ToolTip>
-                    <dxschd:AppointmentBorder x:Name="back" DefaultCornerRadius="4" Background="{Binding ElementName=clrConvCtrl, Path=Container, Converter={StaticResource brushResourcesConverter}, ConverterParameter=ColorDefinition_BackBorder}" Opacity="0.8" ViewInfo="{TemplateBinding ViewInfo}">
+                    <dxschd:AppointmentBorder x:Name="back" DefaultCornerRadius="4" Background="{Binding ElementName=clrConvCtrl, Path=Container, Converter={StaticResource brushResourcesConverter}, ConverterParameter=ColorDefinition_BackBorder}" Opacity="0.8" ViewInfo="{TemplateBinding ViewInfo}"
+                        >
                         <dxschd:AppointmentBorder DefaultCornerRadius="3" DefaultMargin="1" ViewInfo="{TemplateBinding ViewInfo}">
                             <dxschd:LinearGradientBrushSetter.Info>
                                 <dxschd:LinearGradientBrushInfo TargetProperty="Background" EndPoint="0.5,1" StartPoint="0.5,0">
@@ -66,7 +67,7 @@
                                     <GradientStop dxschd:LinearGradientBrushInfo.GradientStopColorId="ColorDefinition_MiddleBorderGradient" Offset="1" />
                                 </dxschd:LinearGradientBrushInfo>
                             </dxschd:LinearGradientBrushSetter.Info>
-                            <dxschd:AppointmentBorder DefaultCornerRadius="2" DefaultMargin="1" ViewInfo="{TemplateBinding ViewInfo}" Background="{Binding ViewInfo.LabelBrush, RelativeSource={RelativeSource TemplatedParent}}"/>
+                            <dxschd:AppointmentBorder DefaultCornerRadius="2" DefaultMargin="1" ViewInfo="{TemplateBinding ViewInfo}" Background="{Binding ViewInfo.LabelBrush, RelativeSource={RelativeSource TemplatedParent}}" />
                         </dxschd:AppointmentBorder>
                     </dxschd:AppointmentBorder>
                     <Grid x:Name="ContentContainer" Margin="3,0,3,0">
@@ -112,20 +113,19 @@
     
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="0.5*"/>
-            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="0.5*" />
+            <RowDefinition Height="0.5*" />
         </Grid.RowDefinitions>
         <dxsch:SchedulerControl Name="schedulerControl1" GroupType="Date" SelectedAppointmentsBindable="{Binding SelectedAppointments}">
             <mvvm:Interaction.Behaviors>
-                <mvvm:EventToCommand EventName="Loaded" Command="{Binding SchedulerLoadedCommand}" PassEventArgsToCommand="True"/>
+                <mvvm:EventToCommand EventName="Loaded" Command="{Binding SchedulerLoadedCommand}" PassEventArgsToCommand="True" />
             </mvvm:Interaction.Behaviors>
             <dxsch:SchedulerControl.Storage>
                 <dxsch:SchedulerStorage Name="storage">
                     <dxsch:SchedulerStorage.AppointmentStorage>
                         <dxsch:AppointmentStorage DataSource="{Binding Appointments}" CommitIdToDataSource="True">
                             <dxsch:AppointmentStorage.Mappings>
-                                <dxsch:AppointmentMapping
-                                    AppointmentId="Id"
+                                <dxsch:AppointmentMapping AppointmentId="Id"
                                     Start="StartTime"
                                     End="EndTime"
                                     Subject="Subject"
@@ -137,20 +137,19 @@
                                     Type="EventType"
                                     RecurrenceInfo="RecurrenceInfo"
                                     ReminderInfo="ReminderInfo"
-                                    ResourceId="ResourceId"/>
+                                    ResourceId="ResourceId" />
                             </dxsch:AppointmentStorage.Mappings>
                             <dxsch:AppointmentStorage.CustomFieldMappings>
-                                <dxsch:SchedulerCustomFieldMapping Member="Price" Name="Price" ValueType="Decimal"/>
+                                <dxsch:SchedulerCustomFieldMapping Member="Price" Name="Price" ValueType="Decimal" />
                             </dxsch:AppointmentStorage.CustomFieldMappings>
                         </dxsch:AppointmentStorage>
                     </dxsch:SchedulerStorage.AppointmentStorage>
                     <dxsch:SchedulerStorage.ResourceStorage>
                         <dxsch:ResourceStorage DataSource="{Binding Resources}">
                             <dxsch:ResourceStorage.Mappings>
-                                <dxsch:ResourceMapping
-                                    Id="Id"
+                                <dxsch:ResourceMapping Id="Id"
                                     Caption="Name"
-                                    Color="Color"/>
+                                    Color="Color" />
                             </dxsch:ResourceStorage.Mappings>
                         </dxsch:ResourceStorage>
                     </dxsch:SchedulerStorage.ResourceStorage>
@@ -163,12 +162,12 @@
             <dxg:GridControl.View>
                 <dxg:TableView NavigationStyle="Row" ShowFilterPanelMode="ShowAlways">
                     <mvvm:Interaction.Behaviors>
-                        <mvvm:EventToCommand EventName="RowDoubleClick" Command="{Binding ShowEditFormCommand}" PassEventArgsToCommand="True"/>
+                        <mvvm:EventToCommand EventName="RowDoubleClick" Command="{Binding ShowEditFormCommand}" PassEventArgsToCommand="True" />
                     </mvvm:Interaction.Behaviors>
                 </dxg:TableView>
             </dxg:GridControl.View>
             <mvvm:Interaction.Behaviors>
-                <mvvm:EventToCommand EventName="FilterChanged" Command="{Binding FilterChangedCommand}" PassEventArgsToCommand="True"/>
+                <mvvm:EventToCommand EventName="FilterChanged" Command="{Binding FilterChangedCommand}" PassEventArgsToCommand="True" />
             </mvvm:Interaction.Behaviors>
         </dxg:GridControl>
     </Grid>
